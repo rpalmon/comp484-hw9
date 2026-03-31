@@ -1,31 +1,47 @@
-<!DOCTYPE html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JavaScript Mini Demo</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<section role="navigation" class="navigation">
-    <nav>
-        <ul>
-            <li><a href="#date-display" id="date-display">Date Display</a></li>
-            <li><a href="#conversion-and-validation" id="conversion-and-validation">Conversion and Validation</a></li>
-            <li><a href="#number-formatting-and-math-results" id="number-formatting-and-math-results">Number Formatting and Math Results</a></li>
-        </ul>
-    </nav>
-</section>
+<body>
+    <header>
+        <nav class="navigation" aria-label="Main navigation">
+            <ul>
+                <li><a href="#date-display">Date Display</a></li>
+                <li><a href="#conversion-and-validation">Conversion and Validation</a></li>
+                <li><a href="#number-formatting-and-math-results">Number Formatting and Math Results</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<section role="date-display" class="date-display">
+    <main>
+        <section id="date-display" class="date-display">
+            <h2>Date Display</h2>
+            <div id="date-container" class="date-container">
+                <!-- Date will be displayed here -->
 
-</section>
+            </div>
+        </section>
 
-<section role="conversion-and-validation" class="conversion-and-validation">
+        <section id="conversion-and-validation" class="conversion-and-validation">
+            <h2>Conversion and Validation</h2>
+            <div id="conversion-container" class="conversion-container">
+                <!-- Conversion and validation results will be displayed here -->
+            </div>
+        </section>
 
-</section>
+        <section id="number-formatting-and-math-results" class="number-formatting-and-math-results">
+            <h2>Number Formatting and Math Results</h2>
+            <div id="number-container" class="number-container">
+                <!-- Number formatting and math results will be displayed here -->
+            </div>
 
-<section role="number-formatting-and-math-results" class="number-formatting-and-math-results">
+        </section>
+    </main>
 
-</section>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
+</body>
 </html>

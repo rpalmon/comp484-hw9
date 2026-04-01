@@ -25,3 +25,41 @@ nav a:hover,nav a:focus{background:var(--accent);color:#fff}
 
 section{padding:20px;min-height:120px}
 
+input[type="text"] {
+    padding: 8px;
+    width: 100%;
+    max-width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin: 10px 0;
+}:focus{
+    border-color: var(--accent);
+    outline: 2px solid var(--accent);
+}
+
+button {
+    padding: 8px 16px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background .15s;
+}
+button:hover {
+    background: #007aff;
+}
+
+.conversion-block {
+    margin-top: 20px;
+    padding: 10px;
+    background: #f0f0f0;
+    border-radius: 4px;
+    border: 2px solid black;
+    /* i want the p to be to the right of the button */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    
+    
+}

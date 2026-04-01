@@ -21,3 +21,9 @@ function updateDate() {
 }
 
 updateDate(); // Initial call to display the date immediately
+
+//Conversion and Validation Section
+function convertableToNumber(value) {
+    return !isNaN(value);
+}
+

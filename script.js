@@ -78,10 +78,10 @@ function checkNan(value) {
 }
 
 function checkInt(value) {
-    if(Number.isInteger(value)) {
-        return `This value: ${value} is an integer.`;
+    if(Number.isInteger(Number(value))) {
+        return `This value: "${value}" is an integer.`;
     } else {
-        return `This value: ${value} is not an integer.`;
+        return `This value: "${value}" is not an integer.`;
     }
 }
 
@@ -136,7 +136,7 @@ blockList.forEach(block => {
             const checkIntResult = Number.isInteger(Number(input.value));
             const checkAverageResult = checkAverage(Number(input.value));
 
-            res.innerHTML = `${newResult} <br> ${checkNan(input.value)} <br> ${checkInt(input.value)} <br> Average: ${checkAverageResult}`;
+            res.innerHTML = ` <br> ${checkNan(input.value)} <br> ${checkInt(input.value)} <br> Average: ${checkAverageResult}`;
             
 
             //set the result

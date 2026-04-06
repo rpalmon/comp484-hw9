@@ -197,3 +197,43 @@ form.addEventListener('submit', (event) => {
 //END OF NUMBER FORMATTING AND MATH RESULTS SECTION
 //////////////////////////////////////////////////////
 
+//////////////////////////////////////////////////////
+//Start of Extra Credit Section
+
+//Add a fourth section that uses typeof to identify the type of at least five values
+
+function identifyType(value) {
+    //make sure it works with boolean, number, string, object, and undefined
+    //check if it can parse as number, boolean, float, object, or undefined
+    const numberValue = Number(value);
+    const booleanValue = (value === 'true' || value === 'false') ? (value === 'true') : null;
+    const floatValue = parseFloat(value);
+    const objectValue = (value.startsWith('{') && value.endsWith('}')) ? JSON.parse(value) : null;
+    const undefinedValue = (value === 'undefined') ? undefined : null;
+
+    //check the type of value and return a string indicating the type
+    switch (typeof value) {
+        case 'number':
+            return `The value "${value}" is of type Number.`;
+        case 'boolean':
+            return `The value "${value}" is of type Boolean.`;
+        case 'object':
+            return `The value "${value}" is of type Object.`;
+        case 'undefined':
+            return `The value "${value}" is of type Undefined.`;
+        default:
+            return `The value "${value}" is of type String.`;
+    }
+}
+
+//add event listener to button to display result
+const identifyTypeButton = document.getElementById('identify-type-button');
+identifyTypeButton.addEventListener('click', () => {
+    const inputValue = document.getElementById('extra-credit-input').value;
+    const result = identifyType(inputValue);
+    const resultDisplay = document.getElementById('extra-credit-result');
+    resultDisplay.textContent = result;
+});
+
+//END OF EXTRA CREDIT SECTION
+//////////////////////////////////////////////////////

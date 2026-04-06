@@ -203,27 +203,37 @@ form.addEventListener('submit', (event) => {
 //Add a fourth section that uses typeof to identify the type of at least five values
 
 function identifyType(value) {
-    //make sure it works with boolean, number, string, object, and undefined
-    //check if it can parse as number, boolean, float, object, or undefined
-    const numberValue = Number(value);
-    const booleanValue = (value === 'true' || value === 'false') ? (value === 'true') : null;
-    const floatValue = parseFloat(value);
-    const objectValue = (value.startsWith('{') && value.endsWith('}')) ? JSON.parse(value) : null;
-    const undefinedValue = (value === 'undefined') ? undefined : null;
+    //convert value to string and remove whitepsace
+    const str = String(value).trim();
 
-    //check the type of value and return a string indicating the type
-    switch (typeof value) {
-        case 'number':
-            return `The value "${value}" is of type Number.`;
-        case 'boolean':
-            return `The value "${value}" is of type Boolean.`;
-        case 'object':
-            return `The value "${value}" is of type Object.`;
-        case 'undefined':
-            return `The value "${value}" is of type Undefined.`;
-        default:
-            return `The value "${value}" is of type String.`;
+    // Check for undefined, boolean, number, object, and string types
+    if (str === 'undefined') {
+        return `The value "${value}" is undefined.`;
     }
+
+    // Check for boolean values (true or false)
+    if (str === 'true' || str === 'false') {
+        return `The value "${value}" is a boolean.`;
+    }
+
+    // Check for number values (including integers and floats)
+    if (!Number.isNaN(Number(str))) {
+        if (str.includes('.')) {
+            return `The value "${value}" is a float.`;
+        }
+        return `The value "${value}" is a number.`;
+    }
+
+    // Check for object values (excluding arrays and null)
+    try {
+        const parsed = JSON.parse(str);
+        if (parsed !== null && typeof parsed === 'object' && !Array.isArray(parsed)) {
+            return `The value "${value}" is an object.`;
+        }
+    } catch {}
+
+    // If none of the above conditions are met, it's a string
+    return `The value "${value}" is a string.`;
 }
 
 //add event listener to button to display result

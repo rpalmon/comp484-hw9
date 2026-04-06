@@ -13,6 +13,7 @@
                 <li><a href="#date-display">Date Display</a></li>
                 <li><a href="#conversion-and-validation">Conversion and Validation</a></li>
                 <li><a href="#number-formatting-and-math-results">Number Formatting and Math Results</a></li>
+                <li><a href="#conditional-messages">Conditional Messages</a></li>
             </ul>
         </nav>
     </header>
@@ -33,33 +34,93 @@
                 <div class="conversion-block">
                     <input type="text" id="conversion-input" placeholder="Enter a number" value="42">
                     <button id="convert-button">Convert to Number</button>
-                    <p id="conversion-result">Result to be displayed</p>
+                    <p id="conversion-result"></p>
+                    <br>
+                    <h3 id="conv-res">Result</h3>
                 </div>
                 <div class="conversion-block">
                     <input type="text" id="validation-input" placeholder="Enter a number" value="19.75">
                     <button id="validate-button">Convert to Number</button>
                     <p id="validation-result"></p>
+                    <br>
+                    <h3 id="val-res">Result</h3>
                 </div>
                 <div class="conversion-block">
                     <input type="text" id="math-input" placeholder="Enter a string" value="hello">
                     <button id="math-button">Calculate</button>
                     <p id="math-result"></p>
+                    <br>
+                    <h3 id="math-res">Result</h3>
                 </div>
                 <div class="conversion-block">
                     <input type="text" id="number-formatting-input" placeholder="Enter a number with a decimal" value="100">
                     <button id="format-button">Format</button>
                     <p id="number-formatting-result"></p>
+                    <br>
+                    <h3 id="format-res">Result</h3>
                 </div>
             </div>
         </section>
 
         <section id="number-formatting-and-math-results" class="number-formatting-and-math-results">
             <h2>Number Formatting and Math Results</h2>
+            <h3>Option A: Price Calculator</h3>
             <div id="number-container" class="number-container">
                 <!-- Number formatting and math results will be displayed here -->
+                <!-- inputs for item price, tax rate, shipping cost -->
+                <form id="price-calculator-form">
+                    <div class="form-group">
+                        <div class="form-block">
+                            <label for="item-price">Item Price:</label>
+                            <input type="text" id="item-price" placeholder="Enter item price" value="49.99">
+                        </div>
+                        <div class="form-block">
+                            <label for="tax-rate">Tax Rate:</label>
+                            <input type="text" id="tax-rate" placeholder="Enter tax rate" value="10">
+                        </div>
+                        <div class="form-block">
+                            <label for="shipping-cost">Shipping Cost:</label>
+                            <input type="text" id="shipping-cost" placeholder="Enter shipping cost" value="5.99">
+                        </div>
+                        <button type="submit" id="calculate-button">Calculate</button>
+                    </div>
+                </form>
+                <div class="price-result">
+                    <div>
+                        <h2>Price Result</h2>
+                    </div>
+                    <div>
+
+                        <h4>Subtotal</h4>
+                        <p id="subtotal-result">$0.00</p>
+                        <h4>Tax Amount</h4>
+                        <p id="tax-result">$0.00</p>
+                        <h4>Shipping Cost</h4>
+                        <p id="shipping-result">$0.00</p>
+                        <h3>Total Cost: <span id="total-result">$0.00</span></h3>
+                    </div>
+                </div>
             </div>
 
         </section>
+
+        <!-- <section id="conditional-messages" class="conditional-messages"> -->
+            <!-- <h2>Conditional Messages</h2> -->
+            <!-- <div id="conditional-container" class="conditional-container"> -->
+                <!-- Conditional messages will be displayed here -->
+            <!-- </div> -->
+            <!-- <form> -->
+                <!-- value of the first input -->
+                <!-- <input type="text" id="value1" placeholder="Enter first value"> -->
+                <!-- value of the second input -->
+                <!-- <select title="Operation" id="operator"> -->
+                    <!-- ${comparisonOperations.map(op => `<option value="${op}">Select an operation</option>`).join('')} -->
+                <!-- </select> -->
+                <!-- <input type="text" id="value2" placeholder="Enter second value"> -->
+                <!-- operator selection -->
+                <!-- <button type="submit">Compare</button> -->
+            <!-- </form> -->
+        <!-- </section> -->
     </main>
 
     <script src="script.js"></script>

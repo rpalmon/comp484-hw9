@@ -203,37 +203,60 @@ form.addEventListener('submit', (event) => {
 //Add a fourth section that uses typeof to identify the type of at least five values
 
 function identifyType(value) {
-    //convert value to string and remove whitepsace
-    const str = String(value).trim();
+    const raw = String(value).trim();
+    let parsedValue;
 
-    // Check for undefined, boolean, number, object, and string types
-    if (str === 'undefined') {
+    // Convert text input into real JS values first
+    if (raw === 'undefined') {
+        parsedValue = undefined;
+    } else if (raw === 'null') {
+        parsedValue = null;
+    } else if (raw === 'true' || raw === 'false') {
+        parsedValue = raw === 'true';
+    } else if (raw !== '' && !Number.isNaN(Number(raw))) {
+        parsedValue = Number(raw);
+    } else {
+        try {
+            parsedValue = JSON.parse(raw); // handles objects/arrays if valid JSON
+        } catch {
+            parsedValue = raw; // fallback to string
+        }
+    }
+
+    // Use typeof checks
+    if (typeof parsedValue === 'undefined') {
         return `The value "${value}" is undefined.`;
     }
 
-    // Check for boolean values (true or false)
-    if (str === 'true' || str === 'false') {
+    if (typeof parsedValue === 'boolean') {
         return `The value "${value}" is a boolean.`;
     }
 
-    // Check for number values (including integers and floats)
-    if (!Number.isNaN(Number(str))) {
-        if (str.includes('.')) {
-            return `The value "${value}" is a float.`;
+    if (typeof parsedValue === 'number') {
+        if (Number.isNaN(parsedValue)) {
+            return `The value "${value}" is NaN (number).`;
         }
-        return `The value "${value}" is a number.`;
+        return Number.isInteger(parsedValue)
+            ? `The value "${value}" is a number (integer).`
+            : `The value "${value}" is a number (float).`;
     }
 
-    // Check for object values (excluding arrays and null)
-    try {
-        const parsed = JSON.parse(str);
-        if (parsed !== null && typeof parsed === 'object' && !Array.isArray(parsed)) {
-            return `The value "${value}" is an object.`;
+    if (typeof parsedValue === 'object') {
+        if (parsedValue === null) {
+            return `The value "${value}" is null (object).`;
         }
-    } catch {}
+        if (Array.isArray(parsedValue)) {
+            return `The value "${value}" is an array (object).`;
+        }
+        return `The value "${value}" is an object.`;
+    }
 
-    // If none of the above conditions are met, it's a string
-    return `The value "${value}" is a string.`;
+    if (typeof parsedValue === 'string') {
+        return `The value "${value}" is a string.`;
+    }
+
+    // Extra safety for any other JS types
+    return `The value "${value}" is of type "${typeof parsedValue}".`;
 }
 
 //add event listener to button to display result
